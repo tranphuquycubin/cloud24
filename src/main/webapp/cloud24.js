@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
-console.log("Hello");
+
 let clickButton=document.getElementById("clickButton");
 clickButton.addEventListener("click",function (){
     alert("Hi");
@@ -11,7 +11,7 @@ clickButton.addEventListener("click",function (){
 let timeButton = document.getElementById("TimeButton");
 
 timeButton.addEventListener("click", function() {
-    fetch('/cloud24/time')
+    fetch('time')
         .then(response => response.text())
         .then(time => {
             alert("Server Time: " + time);

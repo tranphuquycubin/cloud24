@@ -11,7 +11,7 @@ clickButton.addEventListener("click",function (){
 let timeButton = document.getElementById("TimeButton");
 
 timeButton.addEventListener("click", function() {
-    fetch('cloud24/time')
+    fetch('http://13.236.86.10:8080/cloud24/time')
         .then(response => response.text())
         .then(time => {
             alert("Server Time: " + time);

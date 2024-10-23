@@ -8,4 +8,14 @@ clickButton.addEventListener("click",function (){
     alert("Hi");
     clickButton.style.backgroundColor = "#7FFF00";
 });
+let timeButton = document.getElementById("TimeButton");
+
+timeButton.addEventListener("click", function() {
+    fetch('/time')
+        .then(response => response.text())
+        .then(time => {
+            alert("Server Time: " + time);
+        })
+        .catch(error => console.error('Error:', error));
+});
 

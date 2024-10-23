@@ -9,6 +9,6 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet-mapping>
     <servlet-name>TimeServlet</servlet-name>
-    <url-pattern>/time</url-pattern>
+    <url-pattern>/cloud24/time</url-pattern>
 </servlet-mapping>
 </web-app>

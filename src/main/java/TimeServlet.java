@@ -15,16 +15,17 @@ public class TimeServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;  
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LocalTime currentTime = LocalTime.now();
+        LocalTime currentTime = LocalTime.now(); 
         String time = currentTime.getHour() + ":" + String.format("%02d", currentTime.getMinute());
 
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(resp.getOutputStream(), "UTF-8"));
 
         resp.setContentType("text/plain");
         resp.setStatus(200);
-        writer.write(time);
+        writer.write(time); 
         writer.flush();
         writer.close();
     }

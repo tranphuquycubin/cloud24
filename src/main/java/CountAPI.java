@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Admin
@@ -30,19 +29,21 @@ public class CountAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(resp.getOutputStream(), "UTF-8"));
 
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(resp.getOutputStream(), "UTF-8"));
-            
-            try{
+        try {
             Connection con = Configuration.getDBConnection();
-            
-            
+
             PreparedStatement st = con.prepareStatement("SELECT COUNT(ID) as count FROM Role");
             ResultSet rs = st.executeQuery();
 
-            int count = rs.getInt("count");
-            
-            
+            int count = 0;
+
+            if (rs.next()) {
+                count = rs.getInt("count");
+
+            }
+
             resp.setContentType("text/plain");
             resp.setStatus(200);
             writer.write(Integer.toString(count));
@@ -50,7 +51,7 @@ public class CountAPI extends HttpServlet {
             writer.close();
         } catch (Exception ex) {
             //Logger.getLogger(CountAPI.class.getName()).log(Level.SEVERE, null, ex);
-             resp.setContentType("text/plain");
+            resp.setContentType("text/plain");
             resp.setStatus(500);
             writer.write(ex.toString());
             writer.flush();

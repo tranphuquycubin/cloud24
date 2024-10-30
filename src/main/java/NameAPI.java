@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -35,24 +37,20 @@ public class NameAPI extends HttpServlet {
 
             PreparedStatement st = con.prepareStatement("SELECT ID, Name FROM Role");
             ResultSet rs = st.executeQuery();
-            StringBuilder result = new StringBuilder();
-            
-            String id="";
-            String name = "";
+            JSONArray itemsArray = new JSONArray();
+                    while (rs.next()) {
+                        JSONObject item = new JSONObject();
+                        item.put("id", rs.getInt("ID"));
 
-            while (rs.next()) {
-                id=rs.getString("ID");
-                name = rs.getString("name");
-                result.append(id).append(" ").append(name).append("\n");
-
-            }
-            
-
-            resp.setContentType("text/plain");
-            resp.setStatus(200);
-            writer.write(result.toString());
-            writer.flush();
-            writer.close();
+                         item.put("name", rs.getString("name"));
+                        itemsArray.put(item);    
+                    }
+                    st.close();
+                    resp.setContentType("application/json");
+                    resp.setStatus(200);
+                    writer.write(itemsArray.toString());
+                    writer.flush();
+                    writer.close();
         } catch (Exception ex) {
             //Logger.getLogger(CountAPI.class.getName()).log(Level.SEVERE, null, ex);
             resp.setContentType("text/plain");

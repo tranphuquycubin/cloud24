@@ -40,7 +40,7 @@ public class NameAPI extends HttpServlet {
             String id="";
             String name = "";
 
-            if (rs.next()) {
+            while (rs.next()) {
                 id=rs.getString("ID");
                 name = rs.getString("name");
                 result.append(id).append(" ").append(name).append("\n");

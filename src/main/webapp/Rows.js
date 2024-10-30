@@ -8,6 +8,15 @@ const xhr = new XMLHttpRequest();
              if (xhr.status === 200) {
                 let itemsArray = JSON.parse(xhr.responseText);
                 let roles_table = document.getElementById('table1');
+                let header=document.createElement('tr');
+                let id_th =document.createElement('th');
+                id_th=InnerHTML="ID";
+                let name_th =document.createElement('th');
+                name_th=InnerHTML="Name";
+                header.appendChild(id_th);
+                header.appendChild(name_th);
+                roles_table.appendChild(header);
+                
                 for (let i = 0; i < itemsArray.length; i++) {
                     let rows=document.createElement("tr");
                     let cells=document.createElement("td");

@@ -33,13 +33,17 @@ public class NameAPI extends HttpServlet {
         try {
             Connection con = Configuration.getDBConnection();
 
-            PreparedStatement st = con.prepareStatement("SELECT Name as name FROM Role");
+            PreparedStatement st = con.prepareStatement("SELECT ID, Name FROM Role");
             ResultSet rs = st.executeQuery();
-
+            StringBuilder result = new StringBuilder();
+            
+            String id="";
             String name = "";
 
             if (rs.next()) {
+                id=rs.getString("ID");
                 name = rs.getString("name");
+                result.append(id).append(" ").append(name).append("\n");
 
             }
             

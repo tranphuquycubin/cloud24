@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(urlPatterns = {"/nameapi"})
+@WebServlet(urlPatterns = {"/name_api"})
 public class NameAPI extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

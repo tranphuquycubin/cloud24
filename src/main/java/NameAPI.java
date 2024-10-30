@@ -46,7 +46,8 @@ public class NameAPI extends HttpServlet {
                         itemsArray.put(item);    
                     }
                     st.close();
-                    resp.setContentType("application/json");
+                    //resp.setContentType("application/json");
+                    resp.setContentType("text/plain");
                     resp.setStatus(200);
                     writer.write(itemsArray.toString());
                     writer.flush();

@@ -5,8 +5,6 @@ import java.io.OutputStreamWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +15,13 @@ import javax.servlet.http.HttpServletResponse;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 /**
  *
  * @author Admin
  */
-@WebServlet(urlPatterns = {"/count_roles"})
-public class CountAPI extends HttpServlet {
+@WebServlet(urlPatterns = {"/nameapi"})
+public class NameAPI extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,20 +33,20 @@ public class CountAPI extends HttpServlet {
         try {
             Connection con = Configuration.getDBConnection();
 
-            PreparedStatement st = con.prepareStatement("SELECT COUNT(ID) as count FROM Role");
+            PreparedStatement st = con.prepareStatement("SELECT Name as name FROM Role");
             ResultSet rs = st.executeQuery();
 
-            int count = 0;
+            String name = "";
 
             if (rs.next()) {
-                count = rs.getInt("count");
+                name = rs.getString("name");
 
             }
             
 
             resp.setContentType("text/plain");
             resp.setStatus(200);
-            writer.write(Integer.toString(count));
+            writer.write(name);
             writer.flush();
             writer.close();
         } catch (Exception ex) {

@@ -15,9 +15,6 @@ const xhr = new XMLHttpRequest();
                     rows.innerHTML=itemsArray[i].id;
                     rows.appendChild(cells);
                     roles_table.appendChild(rows);
-                    
-
-
                   }}}}
     xhr.open('GET', 'http://54.206.65.201:8080/cloud24/name_api', true);
     xhr.send(null);

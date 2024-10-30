@@ -16,7 +16,7 @@ public class Configuration {
       private static Connection mySQLClient = null;
 
     private final static String JDBC_URL = "jdbc:mysql://cloud24db.c7gagicme5q9.ap-southeast-2.rds.amazonaws.com:3306/Cloud24";
-    private final static String DB_USER = "cloud24";
+    private final static String DB_USER = "cloud24b";
     private final static String DB_PASSWORD = "cloud24";
    
 

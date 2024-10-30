@@ -50,7 +50,7 @@ public class NameAPI extends HttpServlet {
 
             resp.setContentType("text/plain");
             resp.setStatus(200);
-            writer.write(name);
+            writer.write(result.toString());
             writer.flush();
             writer.close();
         } catch (Exception ex) {

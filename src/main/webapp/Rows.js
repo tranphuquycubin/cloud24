@@ -7,7 +7,15 @@ const xhr = new XMLHttpRequest();
         if (xhr.readyState === 4) {
              if (xhr.status === 200) {
                 let itemsArray = JSON.parse(xhr.responseText);
+                let roles_table = document.getElementById('table1');
                 for (let i = 0; i < itemsArray.length; i++) {
+                    let rows=document.createElement("tr");
+                    let cells=document.createElement("td");
+                    cells.innerHTML=itemsArray[i].name;
+                    rows.innerHTML=itemsArray[i].id;
+                    rows.appendChild(cells);
+                    roles_table.appendChild(rows);
+                    
 
 
                   }}}}
